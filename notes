@@ -6,3 +6,11 @@
 
 A. Thread is created by a user
 B. A reply belongs to a thread, and belongs to a user
+
+episode 2 
+
+3:24 
+//use < php artisan ui vue --auth > to create Auth
+
+5:08
+//use < vendor/bin/phpunit > instead of [phpunit]
