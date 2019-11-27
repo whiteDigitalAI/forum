@@ -14,3 +14,8 @@ episode 2
 
 5:08
 //use < vendor/bin/phpunit > instead of [phpunit]
+
+episode 3
+
+4:17
+// skip the test_a_user_can_read_replies_associated_with_a_thread() as it is a compatiblity issue with phpunit
