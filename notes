@@ -7,6 +7,13 @@
 A. Thread is created by a user
 B. A reply belongs to a thread, and belongs to a user
 
+http://gitignore.io/api/netbeans 
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
 episode 2 
 
 3:24 
@@ -19,3 +26,5 @@ episode 3
 
 4:17
 // skip the test_a_user_can_read_replies_associated_with_a_thread() as it is a compatiblity issue with phpunit
+//Skip all the tests in this episode and do only the coding part
+
