@@ -28,3 +28,5 @@ episode 3
 // skip the test_a_user_can_read_replies_associated_with_a_thread() as it is a compatiblity issue with phpunit
 //Skip all the tests in this episode and do only the coding part
 
+
+<li><a href="/threads/{{ $channel->slug }}">{{ $channel->name }}</a></li>
