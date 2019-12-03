@@ -35,9 +35,11 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/threads/create">New Thread</a>
                             </li>
+                            @if (auth()->check())
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Pricing</a>
+                                <a class="nav-link" href="/threads?by={{ auth()->user()->name }}">My Threads</a>
                             </li>
+                            @endif
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Channels

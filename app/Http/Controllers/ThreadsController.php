@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Thread;
+use App\Filters\ThreadFilters;
 use App\Channel;
 use Illuminate\Http\Request;
 
@@ -19,23 +20,11 @@ class ThreadsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Channel $channel){
+    public function index(Channel $channel, ThreadFilters $filters){
         
-//        $channelId = Channel::where('slug' , $channelSlug)->first()->id();
+               $threads = $this->getThreads($channel, $filters);
         
-        if ($channel->exists){
-            
-//            $threads = Thread::where ('channel_id', $channelId)->latest()->get();
-            $threads = $channel->threads()->latest()->get();
-                    
-        } else{
-            
-            $threads = Thread::latest()->get();
-        }
-            
-        
-        
-        return view('threads.index', compact('threads')); 
+               return view('threads.index', compact('threads')); 
     }
 
     /**
@@ -119,5 +108,14 @@ class ThreadsController extends Controller
     public function destroy(Thread $thread)
     {
         //
+    }
+    
+    protected function getThreads(Channel $channel, ThreadFilters $filters)
+    {
+        $threads = Thread::latest()->filter($filters);
+        if ($channel->exists) {
+            $threads->where('channel_id', $channel->id);
+        }
+        return $threads->paginate(25);
     }
 }
