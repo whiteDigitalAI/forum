@@ -15,11 +15,19 @@
         <!-- Fonts -->
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
+        
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/0.11.1/trix.css">
     </head>
-    <body style="padding-bottom: 100px">
+    <style>
+        body { padding-bottom: 100px; }
+        .level { display: flex; align-items: center; }
+        .flex { flex: 1;}
+        
+    </style>
+    
+    <body>
         <div id="app">
             <div class="container">
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -28,18 +36,34 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                                                
                         <ul class="navbar-nav">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="/threads">All Threads <span class="sr-only">(current)</span></a>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Browse
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <ul>
+                                        <li>  
+                                            <a href="/threads">All Threads </a>                                           
+                                        </li>
+                                        <li>  
+                                            <a href="/threads?popular=1">Popular Threads</a>                                           
+                                        </li>
+                                        <li>  
+                                            <a href="/threads/create">New Thread</a>                                           
+                                        </li>
+                                        @if (auth()->check())
+                                        <li>
+                                            <a href="/threads?by={{ auth()->user()->name }}">My Threads</a>
+                                        </li>
+                                        @endif
+                                    </ul>
+                                </div>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/threads/create">New Thread</a>
-                            </li>
-                            @if (auth()->check())
-                            <li class="nav-item">
-                                <a class="nav-link" href="/threads?by={{ auth()->user()->name }}">My Threads</a>
-                            </li>
-                            @endif
+                            
+                            
+                           
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Channels
