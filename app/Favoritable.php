@@ -1,21 +1,21 @@
 <?php
 
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-use Favoritable;
-
-class Reply extends Model
-{
-    protected $guarded = [];
-    protected $with = ['owner','favorites'];
-    
-    public function owner(){
-        
-        return $this->belongsTo(User::class, 'user_id');
-        
-    }
+/**
+ * Description of Favoritable
+ *
+ * @author GunaSeelan
+ */
+trait Favoritable {
     
     public function favorites(){
         
@@ -42,5 +42,4 @@ class Reply extends Model
         
         return $this->favorites->count();
     }
-            
 }
