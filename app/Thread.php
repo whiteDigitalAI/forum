@@ -21,9 +21,15 @@ class Thread extends Model
         }
             );
             
-        
-        
-    }
+        static::deleting(function ($thread) {
+            
+            $thread->replies()->delete();
+            
+        });
+            
+        }
+                
+            
     
     public function path(){
         
