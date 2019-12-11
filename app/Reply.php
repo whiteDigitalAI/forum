@@ -3,8 +3,9 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Activity;
 
-use Favoritable;
+use Favoritable, RecordsActivity;
 
 class Reply extends Model
 {
