@@ -4,12 +4,14 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Activity;
+
 
 
 trait RecordsActivity {
     
     protected static function bootRecordsActivity(){
+        
+        if (auth()->guest()) return;
         
         static::created(function($thread) {
 
@@ -17,11 +19,17 @@ trait RecordsActivity {
             
         });
         
+        static::deleting(function($model) {
+            
+            $model->activity()->delete();
+            
+        });
+        
     }
     
     public function activity(){
         
-        return $this->morphMany('App/Activity', 'subject');
+        return $this->morphMany('App\Activity', 'subject');
         
     }
 
